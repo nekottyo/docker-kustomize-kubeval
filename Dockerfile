@@ -3,6 +3,8 @@ ENV KUBEVAL_VERSION=0.9.2 \
     KUBECTL_VERSION=1.14.0 \
     KUSTOMIZE_VERSION=2.0.3
 
+WORKDIR /app
+
 RUN apk add --no-cache \
       curl \
       wget \
