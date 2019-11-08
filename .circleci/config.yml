@@ -5,7 +5,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: kyletru/container-structure:latest
+      - image: gcr.io/gcp-runtimes/container-structure-test
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
 
     steps:
