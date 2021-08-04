@@ -1,7 +1,7 @@
-FROM alpine:3.13
-ENV KUBEVAL_VERSION=0.15.0 \
-    KUBECTL_VERSION=1.18.6 \
-    KUSTOMIZE_VERSION=3.8.1
+FROM alpine:3.14
+ENV KUBEVAL_VERSION=0.16.1 \
+    KUBECTL_VERSION=1.21.3 \
+    KUSTOMIZE_VERSION=4.2.0
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN apk add --no-cache \
       wget \
       git
 
-RUN wget -q https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz \
+RUN wget -q https://github.com/instrumenta/kubeval/releases/download/v${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz \
     && tar xf kubeval-linux-amd64.tar.gz \
     && mv kubeval /usr/local/bin \
     && rm -rf kubeval-linux-amd64.tar.gz
