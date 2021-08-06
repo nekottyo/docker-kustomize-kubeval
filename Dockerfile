@@ -1,7 +1,6 @@
-FROM alpine:3.14
+FROM alpine:3.14 as builder
 ENV KUBEVAL_VERSION=0.16.1 \
-    KUBECTL_VERSION=1.21.3 \
-    KUSTOMIZE_VERSION=4.2.0
+    KUBECTL_VERSION=1.21.3
 
 WORKDIR /app
 
@@ -18,10 +17,28 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/download/v${KUBEVAL_
 RUN curl -sLf https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
 
+CMD ["kustomize"]
+
+FROM builder as kustomizev4
+
+ENV KUSTOMIZE_VERSION=4.2.0
+
 RUN curl -sLf https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz -o kustomize.tar.gz\
     && tar xf kustomize.tar.gz \
     && mv kustomize /usr/local/bin \
     && chmod +x /usr/local/bin/kustomize \
     && rm -rf ./*
 
-CMD ["kustomize"]
+
+FROM builder as kustomizev3
+
+ENV KUSTOMIZE_VERSION=3.10.0
+
+RUN curl -sLf https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz -o kustomize.tar.gz\
+    && tar xf kustomize.tar.gz \
+    && mv kustomize /usr/local/bin \
+    && chmod +x /usr/local/bin/kustomize \
+    && rm -rf ./*
+
+
+FROM kustomizev4

@@ -9,7 +9,7 @@ commandTests:
   - name: "kustomize test"
     command: "kustomize"
     args: ["version"]
-    expectedOutput: ["Version:.*"]
+    expectedOutput: ["Version:kustomize/v4.*"]
 
   - name: "kubeval test"
     command: "kubeval"
