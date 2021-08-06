@@ -4,9 +4,6 @@ on: pull_request
 jobs:
   dockerfile-test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        tags: [kustomizev3, kustomizev4]
     steps:
       -
         name: Set up QEMU
