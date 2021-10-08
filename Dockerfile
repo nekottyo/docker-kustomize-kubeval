@@ -1,6 +1,6 @@
 FROM alpine:3.14 as builder
 ENV KUBEVAL_VERSION=0.16.1 \
-    KUBECTL_VERSION=1.21.3
+    KUBECTL_VERSION=1.22.2
 
 WORKDIR /app
 
@@ -21,7 +21,7 @@ CMD ["kustomize"]
 
 FROM builder as kustomizev4
 
-ENV KUSTOMIZE_VERSION=4.2.0
+ENV KUSTOMIZE_VERSION=4.4.0
 
 RUN curl -sLf https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz -o kustomize.tar.gz\
     && tar xf kustomize.tar.gz \
