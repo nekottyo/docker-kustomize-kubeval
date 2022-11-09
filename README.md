@@ -1,8 +1,11 @@
 # docker-kustomize-kubeval
 
-[![docker push](https://github.com/nekottyo/docker-kustomize-kubeval/actions/workflows/docker-push.yml/badge.svg)](https://github.com/nekottyo/docker-kustomize-kubeval/actions/workflows/docker-push.yml)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nekottyo/docker-kustomize-kubeval/Test%20Dockerfile%20structure?style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/nekottyo/kustomize-kubeval?style=for-the-badge)
 
-[![nekottyo/kustomize-kubeval](http://dockeri.co/image/nekottyo/kustomize-kubeval)](https://hub.docker.com/r/nekottyo/kustomize-kubeval)
+
+https://hub.docker.com/r/nekottyo/kustomize-kubeval
+
 
 This image include `kubectl`, `kustomize`, `kubeval`
 

@@ -39,3 +39,10 @@ jobs:
           push: true
           tags: nekottyo/kustomize-kubeval:kustomizev3
           target: kustomizev3
+
+      - name: Update repo description
+        uses: peter-evans/dockerhub-description@v2
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKERHUB_REPOSITORY: nekottyo/kustomize-kubeval
